@@ -1,0 +1,455 @@
+{
+  "info": {
+    "_postman_id": "airbdb-api-collection",
+    "name": "AirbDB API",
+    "description": "Coleção completa de endpoints da API AirbDB para teste e desenvolvimento",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Root & Health",
+      "item": [
+        {
+          "name": "Root",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Listings",
+      "item": [
+        {
+          "name": "Buscar propriedades com filtros",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/listings/search?min_price=100&max_price=5000&neighborhoods=Copacabana,Ipanema&min_rating=4&min_capacity=2&min_reviews=10&superhost_only=true&limit=100&offset=0",
+              "host": ["{{base_url}}"],
+              "path": ["api", "listings", "search"],
+              "query": [
+                {
+                  "key": "min_price",
+                  "value": "100",
+                  "description": "Preço mínimo"
+                },
+                {
+                  "key": "max_price",
+                  "value": "5000",
+                  "description": "Preço máximo"
+                },
+                {
+                  "key": "neighborhoods",
+                  "value": "Copacabana,Ipanema",
+                  "description": "Bairros separados por vírgula"
+                },
+                {
+                  "key": "min_rating",
+                  "value": "4",
+                  "description": "Nota mínima"
+                },
+                {
+                  "key": "min_capacity",
+                  "value": "2",
+                  "description": "Capacidade mínima"
+                },
+                {
+                  "key": "min_reviews",
+                  "value": "10",
+                  "description": "Número mínimo de avaliações"
+                },
+                {
+                  "key": "superhost_only",
+                  "value": "true",
+                  "description": "Apenas superhosts"
+                },
+                {
+                  "key": "check_in",
+                  "value": "2025-01-15",
+                  "description": "Data check-in (YYYY-MM-DD)",
+                  "disabled": true
+                },
+                {
+                  "key": "check_out",
+                  "value": "2025-01-20",
+                  "description": "Data check-out (YYYY-MM-DD)",
+                  "disabled": true
+                },
+                {
+                  "key": "min_available_days",
+                  "value": "7",
+                  "description": "Mínimo de dias disponíveis",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Limite de resultados"
+                },
+                {
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset para paginação"
+                }
+              ]
+            },
+            "description": "Busca propriedades com filtros avançados (preço, bairros, rating, capacidade, reviews, superhost, disponibilidade, paginação)"
+          },
+          "response": []
+        },
+        {
+          "name": "Amenidades de uma propriedade",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/properties/:property_id/amenities",
+              "host": ["{{base_url}}"],
+              "path": ["api", "properties", ":property_id", "amenities"],
+              "variable": [
+                {
+                  "key": "property_id",
+                  "value": "1",
+                  "description": "ID da propriedade"
+                }
+              ]
+            },
+            "description": "Lista todas as amenidades/comodidades de uma propriedade específica"
+          },
+          "response": []
+        },
+        {
+          "name": "Disponibilidade de uma propriedade",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/properties/:property_id/availability",
+              "host": ["{{base_url}}"],
+              "path": ["api", "properties", ":property_id", "availability"],
+              "variable": [
+                {
+                  "key": "property_id",
+                  "value": "1",
+                  "description": "ID da propriedade"
+                }
+              ]
+            },
+            "description": "Retorna apenas as datas disponíveis de uma propriedade"
+          },
+          "response": []
+        },
+        {
+          "name": "Avaliações de uma propriedade",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/properties/:property_id/reviews?min_year=2024&offset=0",
+              "host": ["{{base_url}}"],
+              "path": ["api", "properties", ":property_id", "reviews"],
+              "query": [
+                {
+                  "key": "min_year",
+                  "value": "2024",
+                  "description": "Ano mínimo das avaliações"
+                },
+                {
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset para paginação"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "property_id",
+                  "value": "1",
+                  "description": "ID da propriedade"
+                }
+              ]
+            },
+            "description": "Retorna avaliações de uma propriedade com dados do usuário (paginado, limite 10 por página)"
+          },
+          "response": []
+        },
+        {
+          "name": "Perfil do anfitrião",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/hosts/:host_id/profile",
+              "host": ["{{base_url}}"],
+              "path": ["api", "hosts", ":host_id", "profile"],
+              "variable": [
+                {
+                  "key": "host_id",
+                  "value": "1",
+                  "description": "ID do anfitrião"
+                }
+              ]
+            },
+            "description": "Retorna informações completas do anfitrião (perfil, total de propriedades, média de avaliações, total de reviews)"
+          },
+          "response": []
+        },
+        {
+          "name": "Propriedades de um anfitrião",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/hosts/:host_id/properties?offset=0",
+              "host": ["{{base_url}}"],
+              "path": ["api", "hosts", ":host_id", "properties"],
+              "query": [
+                {
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset para paginação"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "host_id",
+                  "value": "1",
+                  "description": "ID do anfitrião"
+                }
+              ]
+            },
+            "description": "Lista propriedades do anfitrião com ranking (paginado, limite 5 por página)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Statistics",
+      "item": [
+        {
+          "name": "Estatísticas por bairro",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/neighborhoods/stats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "neighborhoods", "stats"]
+            },
+            "description": "Retorna estatísticas agregadas de cada bairro (total de listagens, preço médio, avaliação média, capacidade média, superhosts, hosts verificados)"
+          },
+          "response": []
+        },
+        {
+          "name": "Estatísticas gerais",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/stats/overview",
+              "host": ["{{base_url}}"],
+              "path": ["api", "stats", "overview"]
+            },
+            "description": "Retorna estatísticas gerais do sistema (total de propriedades, hosts, bairros, usuários, preço médio, avaliação média, superhosts, hosts verificados, total de reviews)"
+          },
+          "response": []
+        },
+        {
+          "name": "Ranking de anfitriões",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/hosts/ranking?neighborhood=Copacabana",
+              "host": ["{{base_url}}"],
+              "path": ["api", "hosts", "ranking"],
+              "query": [
+                {
+                  "key": "neighborhood",
+                  "value": "Copacabana",
+                  "description": "Filtrar por bairro (opcional)",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retorna ranking de anfitriões com múltiplas propriedades (mínimo 2), ordenado por avaliação média e total de reviews (limite 50)"
+          },
+          "response": []
+        },
+        {
+          "name": "Propriedades em alta",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/properties/trending",
+              "host": ["{{base_url}}"],
+              "path": ["api", "properties", "trending"]
+            },
+            "description": "Retorna propriedades com mais avaliações recentes nos últimos 6 meses (mínimo 5 avaliações, limite 20)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Heatmap",
+      "item": [
+        {
+          "name": "Heatmap de densidade",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/heatmap/density",
+              "host": ["{{base_url}}"],
+              "path": ["api", "heatmap", "density"]
+            },
+            "description": "Retorna coordenadas de todas as propriedades para mapa de calor de densidade (cada propriedade com peso/intensity 1)"
+          },
+          "response": []
+        },
+        {
+          "name": "Heatmap de preços",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/heatmap/price",
+              "host": ["{{base_url}}"],
+              "path": ["api", "heatmap", "price"]
+            },
+            "description": "Retorna coordenadas e preços normalizados para mapa de calor de preços (intensity normalizada entre 0 e 1)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "item": [
+        {
+          "name": "Busca com filtros avançados",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/listings/search?min_price=100&max_price=5000&neighborhood1=Copacabana&neighborhood2=Ipanema&property_type=Apartment&min_rating=4&min_capacity=2&min_reviews=10&amenity=Pool&superhost_only=true",
+              "host": ["{{base_url}}"],
+              "path": ["api", "listings", "search"],
+              "query": [
+                {
+                  "key": "min_price",
+                  "value": "100",
+                  "description": "Preço mínimo"
+                },
+                {
+                  "key": "max_price",
+                  "value": "5000",
+                  "description": "Preço máximo"
+                },
+                {
+                  "key": "neighborhood1",
+                  "value": "Copacabana",
+                  "description": "Bairro 1"
+                },
+                {
+                  "key": "neighborhood2",
+                  "value": "Ipanema",
+                  "description": "Bairro 2"
+                },
+                {
+                  "key": "property_type",
+                  "value": "Apartment",
+                  "description": "Tipo de propriedade"
+                },
+                {
+                  "key": "min_rating",
+                  "value": "4",
+                  "description": "Nota mínima"
+                },
+                {
+                  "key": "min_capacity",
+                  "value": "2",
+                  "description": "Capacidade mínima"
+                },
+                {
+                  "key": "min_reviews",
+                  "value": "10",
+                  "description": "Número mínimo de avaliações"
+                },
+                {
+                  "key": "amenity",
+                  "value": "Pool",
+                  "description": "Amenidade específica"
+                },
+                {
+                  "key": "superhost_only",
+                  "value": "true",
+                  "description": "Apenas superhosts"
+                }
+              ]
+            },
+            "description": "Busca propriedades com filtros avançados (nota: existe duplicação com endpoint similar em Listings)"
+          },
+          "response": []
+        },
+        {
+          "name": "Melhores ofertas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/listings/best-deals?max_price=5000&min_amenities=3",
+              "host": ["{{base_url}}"],
+              "path": ["api", "listings", "best-deals"],
+              "query": [
+                {
+                  "key": "max_price",
+                  "value": "5000",
+                  "description": "Preço máximo"
+                },
+                {
+                  "key": "min_amenities",
+                  "value": "3",
+                  "description": "Número mínimo de amenidades"
+                }
+              ]
+            },
+            "description": "Retorna as melhores ofertas: bom preço + múltiplas amenidades + host verificado"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ]
+}
