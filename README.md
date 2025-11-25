@@ -57,7 +57,7 @@ Execute o script SQL `airbnb_schema.sql` (localizado na pasta /misc) no MySQL pa
 mysql -u root -p < ../airbnb.sql
 ```
 
-Ou utilize o `airbnb_com_dados.sql` (localizado na pasta /misc) da mesma forma, para popular o banco de dados automaticamente.
+Ou utilize o `airbnb_com_dados.sql` da mesma forma, para popular o banco de dados automaticamente.
 
 ## ▶️ Executar a aplicação
 

@@ -42,3 +42,6 @@ Thumbs.db
 
 # uv
 .uv/
+
+# Large data files
+misc/airbnb_com_dados.zip
