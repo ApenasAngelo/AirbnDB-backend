@@ -36,12 +36,6 @@ async def search_listings(
     min_reviews: Optional[int] = Query(None, description="Número mínimo de avaliações"),
     # Filtro de superhost
     superhost_only: Optional[bool] = Query(None, description="Apenas superhosts"),
-    # Filtros de disponibilidade
-    check_in: Optional[str] = Query(None, description="Data check-in (YYYY-MM-DD)"),
-    check_out: Optional[str] = Query(None, description="Data check-out (YYYY-MM-DD)"),
-    min_available_days: Optional[int] = Query(
-        None, description="Mínimo de dias disponíveis"
-    ),
     # Paginação/Limites
     limit: Optional[int] = Query(100, description="Limite de resultados"),
     offset: Optional[int] = Query(0, description="Offset para paginação"),
