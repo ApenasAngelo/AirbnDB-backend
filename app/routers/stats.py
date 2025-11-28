@@ -70,8 +70,8 @@ async def get_overview_stats():
         COUNT(DISTINCT U.id) AS total_users,
         ROUND(AVG(P.preco), 2) AS overall_avg_price,
         ROUND(AVG(P.nota), 2) AS overall_avg_rating,
-        SUM(CASE WHEN A.superhost = 1 THEN 1 ELSE 0 END) AS total_superhosts,
-        SUM(CASE WHEN A.verificado = 1 THEN 1 ELSE 0 END) AS total_verified_hosts,
+        COUNT(DISTINCT CASE WHEN A.superhost = 1 THEN A.id END) AS total_superhosts,
+        COUNT(DISTINCT CASE WHEN A.verificado = 1 THEN A.id END) AS total_verified_hosts,
         COUNT(DISTINCT Av.id) AS total_reviews
     FROM Propriedade AS P
     JOIN Anfitriao AS A ON P.id_anfitriao = A.id
