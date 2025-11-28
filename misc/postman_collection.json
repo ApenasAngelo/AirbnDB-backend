@@ -86,24 +86,6 @@
                   "description": "Apenas superhosts"
                 },
                 {
-                  "key": "check_in",
-                  "value": "2025-01-15",
-                  "description": "Data check-in (YYYY-MM-DD)",
-                  "disabled": true
-                },
-                {
-                  "key": "check_out",
-                  "value": "2025-01-20",
-                  "description": "Data check-out (YYYY-MM-DD)",
-                  "disabled": true
-                },
-                {
-                  "key": "min_available_days",
-                  "value": "7",
-                  "description": "Mínimo de dias disponíveis",
-                  "disabled": true
-                },
-                {
                   "key": "limit",
                   "value": "100",
                   "description": "Limite de resultados"
@@ -115,7 +97,7 @@
                 }
               ]
             },
-            "description": "Busca propriedades com filtros avançados (preço, bairros, rating, capacidade, reviews, superhost, disponibilidade, paginação)"
+            "description": "Busca propriedades com filtros avançados (preço, bairros, rating, capacidade, reviews, superhost, paginação)"
           },
           "response": []
         },
@@ -342,103 +324,6 @@
               "path": ["api", "heatmap", "price"]
             },
             "description": "Retorna coordenadas e preços normalizados para mapa de calor de preços (intensity normalizada entre 0 e 1)"
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Search",
-      "item": [
-        {
-          "name": "Busca com filtros avançados",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/api/listings/search?min_price=100&max_price=5000&neighborhood1=Copacabana&neighborhood2=Ipanema&property_type=Apartment&min_rating=4&min_capacity=2&min_reviews=10&amenity=Pool&superhost_only=true",
-              "host": ["{{base_url}}"],
-              "path": ["api", "listings", "search"],
-              "query": [
-                {
-                  "key": "min_price",
-                  "value": "100",
-                  "description": "Preço mínimo"
-                },
-                {
-                  "key": "max_price",
-                  "value": "5000",
-                  "description": "Preço máximo"
-                },
-                {
-                  "key": "neighborhood1",
-                  "value": "Copacabana",
-                  "description": "Bairro 1"
-                },
-                {
-                  "key": "neighborhood2",
-                  "value": "Ipanema",
-                  "description": "Bairro 2"
-                },
-                {
-                  "key": "property_type",
-                  "value": "Apartment",
-                  "description": "Tipo de propriedade"
-                },
-                {
-                  "key": "min_rating",
-                  "value": "4",
-                  "description": "Nota mínima"
-                },
-                {
-                  "key": "min_capacity",
-                  "value": "2",
-                  "description": "Capacidade mínima"
-                },
-                {
-                  "key": "min_reviews",
-                  "value": "10",
-                  "description": "Número mínimo de avaliações"
-                },
-                {
-                  "key": "amenity",
-                  "value": "Pool",
-                  "description": "Amenidade específica"
-                },
-                {
-                  "key": "superhost_only",
-                  "value": "true",
-                  "description": "Apenas superhosts"
-                }
-              ]
-            },
-            "description": "Busca propriedades com filtros avançados (nota: existe duplicação com endpoint similar em Listings)"
-          },
-          "response": []
-        },
-        {
-          "name": "Melhores ofertas",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/api/listings/best-deals?max_price=5000&min_amenities=3",
-              "host": ["{{base_url}}"],
-              "path": ["api", "listings", "best-deals"],
-              "query": [
-                {
-                  "key": "max_price",
-                  "value": "5000",
-                  "description": "Preço máximo"
-                },
-                {
-                  "key": "min_amenities",
-                  "value": "3",
-                  "description": "Número mínimo de amenidades"
-                }
-              ]
-            },
-            "description": "Retorna as melhores ofertas: bom preço + múltiplas amenidades + host verificado"
           },
           "response": []
         }
