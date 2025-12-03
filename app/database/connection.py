@@ -82,14 +82,15 @@ def execute_query(
         raise Exception("Database connection pool not initialized")
 
     with get_db_connection() as conn:
-        cursor = conn.cursor(dictionary=True, buffered=True)
+        cursor = conn.cursor(dictionary=True)
         try:
-            # Definir timeout de 5 segundos para a query
-            cursor.execute("SET SESSION MAX_EXECUTION_TIME=30000")
             cursor.execute(query, params or ())
 
             if fetch_one:
-                return cursor.fetchone()
+                result = cursor.fetchone()
+                # Consumir resultados restantes para evitar "Unread result found"
+                cursor.fetchall()
+                return result
             elif fetch_all:
                 return cursor.fetchall()
             else:
