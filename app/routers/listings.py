@@ -26,7 +26,7 @@ async def search_listings(
     # Filtros de preço
     min_price: Optional[float] = Query(None, description="Preço mínimo"),
     max_price: Optional[float] = Query(None, description="Preço máximo"),
-    # Filtros de bairros (multi-seleção)
+    # Filtros de bairros
     neighborhoods: Optional[str] = Query(
         None, description="Bairros separados por vírgula"
     ),
@@ -41,9 +41,8 @@ async def search_listings(
     offset: Optional[int] = Query(0, description="Offset para paginação"),
 ):
     """
-    Consulta SIMPLIFICADA de busca de propriedades (sem subqueries pesadas).
+    Consulta de busca de propriedades.
     """
-    # Query base simplificada
     query = """
     SELECT 
         P.id AS property_id,
