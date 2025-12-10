@@ -18,11 +18,14 @@ Backend da aplicação AirbnDB desenvolvido com FastAPI e MySQL para o trabalho 
 
 ## 🔧 Instalação
 
+### Opção 1: Com uv (recomendado)
+
 1. **Criar e ativar o ambiente virtual:**
 
 ```bash
 uv venv
-.venv\Scripts\activate  # Windows
+source .venv/bin/activate  # macOS/Linux
+.venv\Scripts\activate     # Windows
 ```
 
 2. **Instalar dependências:**
@@ -30,6 +33,24 @@ uv venv
 ```bash
 uv pip install -e .
 ```
+
+### Opção 2: Com pip tradicional
+
+1. **Criar e ativar o ambiente virtual:**
+
+```bash
+python -m venv .venv
+source .venv/bin/activate  # macOS/Linux
+.venv\Scripts\activate     # Windows
+```
+
+2. **Instalar dependências:**
+
+```bash
+pip install -r requirements.txt
+```
+
+### Configuração
 
 3. **Configurar variáveis de ambiente:**
 
@@ -118,8 +139,20 @@ Importe o arquivo `postman_collection.json` (localizado na pasta /misc) no Postm
 
 ## 👨‍💻 Desenvolvimento
 
-O projeto utiliza `uv` como gerenciador de pacotes. Para adicionar novas dependências:
+O projeto utiliza `uv` como gerenciador de pacotes, mas também suporta `pip` tradicional.
+
+### Adicionar novas dependências:
+
+**Com uv:**
 
 ```bash
-uv pip install nome-do-pacote
+uv add nome-do-pacote
+uv sync
+```
+
+**Com pip:**
+
+```bash
+pip install nome-do-pacote
+pip freeze > requirements.txt  # Atualizar requirements.txt
 ```

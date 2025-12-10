@@ -1,7 +1,7 @@
 [project]
 name = "trabalho-bd-backend"
 version = "0.1.0"
-description = "Backend FastAPI para o projeto AirbnbRJ - Trabalho de Banco de Dados"
+description = "Backend FastAPI para o projeto AirbnDB - Trabalho de Banco de Dados"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
